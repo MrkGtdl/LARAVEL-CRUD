@@ -10,8 +10,8 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <a href="http://127.0.0.1:8000/products" style="text-decoration: none;"><h2>LARAVEL CRUD</h2></a>
+            <div class="pull-left ">
+                <a href="http://127.0.0.1:8000/products" style="text-decoration: none;"><h2 class="text-black-50">LARAVEL CRUD</h2></a>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
     <!-- footer -->
     <div class="footer">
     <small style="display: flex;justify-content: center;">Showing {{ $products->firstItem() }} - {{ $products->lastItem() }} of {{ $products->total() }} entries</small>
-    <span>{!! $products->links() !!}</span>
+    <span class ="text-black">{!! $products->links() !!}</span>
     </div>
 
       
