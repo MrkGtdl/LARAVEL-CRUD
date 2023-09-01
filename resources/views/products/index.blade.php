@@ -26,20 +26,21 @@
                         </form>
                     </div>
                 </div>
-                <a class="btn btn-success" href="{{ route('products.create') }}" style="height: fit-content;"> Create</a>
+                <a class="btn btn-success" href="{{ route('products.create') }}" style="height: fit-content;"> <i class="fa-solid fa-plus"></i> Create</a>
             </div>
 
    
 
    
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success alert-dismissible">
+        <a href="http://127.0.0.1:8000/products" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <p>{{ $message }}</p>
         </div>
     @endif
    
     <table class="table table-bordered">
-        <tr>
+        <tr class="bg-warning">
             <th width="280px">Action</th>
             <th>Id</th>
             <th>Title</th>
@@ -51,14 +52,14 @@
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}"><i class="fa-solid fa-eye"></i></a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}"><i class="fa-solid fa-pen"></i></a>
    
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                 </form>
             </td>
             <td>{{ ++$i }}</td>

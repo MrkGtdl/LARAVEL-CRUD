@@ -55,7 +55,7 @@ class ProductController extends Controller
         ]);
 
         $fileName = time() . '.' . $request->productImage->extension();
-        $request->productImage->storeAs('public/images', $fileName);
+        $request->productImage->move('images', $fileName);
 
         $product = new Product;
         $product->productName = $request->input('productName');
