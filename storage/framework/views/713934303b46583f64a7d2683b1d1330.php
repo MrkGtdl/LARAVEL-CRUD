@@ -11,13 +11,13 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a href="http://127.0.0.1:8000/products"><h2>LARAVEL CRUD</h2></a>
+                <a href="http://127.0.0.1:8000/products" style="text-decoration: none;"><h2>LARAVEL CRUD</h2></a>
             </div>
         </div>
     </div>
 
     <div class="pull-right">
-                <div class="mt-1 mb-4">
+                <div class="mt-1 mb-2">
                     <div class="relative max-w-xs">
                         <form action="<?php echo e(route('products.index')); ?>" method="GET">
                             <input type="text" name="s"
@@ -26,7 +26,7 @@
                         </form>
                     </div>
                 </div>
-                <a class="btn btn-success" href="<?php echo e(route('products.create')); ?>" style="height: fit-content;"> <i class="fa-solid fa-plus"></i> Create</a>
+                <a class="btn btn-warning" href="<?php echo e(route('products.create')); ?>" style="height: fit-content;"> <i class="fa-solid fa-plus"></i> Create</a>
             </div>
 
    
@@ -39,9 +39,9 @@
         </div>
     <?php endif; ?>
    
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped table-hover" style="border-color: gray;">
         <tr class="bg-warning">
-            <th width="280px">Action</th>
+            <th width="155px">Action</th>
             <th>Id</th>
             <th>Title</th>
             <th>Details</th>
@@ -52,7 +52,7 @@
             <td>
                 <form action="<?php echo e(route('products.destroy',$product->id)); ?>" method="POST">
    
-                    <a class="btn btn-info" href="<?php echo e(route('products.show',$product->id)); ?>"><i class="fa-solid fa-eye"></i></a>
+                    <a class="btn btn-success" href="<?php echo e(route('products.show',$product->id)); ?>"><i class="fa-solid fa-eye"></i></a>
     
                     <a class="btn btn-primary" href="<?php echo e(route('products.edit',$product->id)); ?>"><i class="fa-solid fa-pen"></i></a>
    

@@ -3,7 +3,7 @@
     <title>Laravel CRUD</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: E6E3D3;">
     
 <div class="container">
     <?php echo $__env->yieldContent('content'); ?>
