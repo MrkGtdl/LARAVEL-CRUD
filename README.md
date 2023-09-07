@@ -69,5 +69,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 This CRUD uses pagination with search, import and export features.
 
+run the project with the url http://127.0.0.1:8000/products
+
 ## Sample Screenshot
 ![Alt text](image.png)
