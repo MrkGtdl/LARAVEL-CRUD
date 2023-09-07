@@ -67,7 +67,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Description
 
-This CRUD uses pagination with search, and import and export features.
+This CRUD uses pagination with search, import and export features.
 
 ## Sample Screenshot
 ![Alt text](image.png)
