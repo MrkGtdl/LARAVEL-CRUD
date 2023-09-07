@@ -3,8 +3,19 @@
     .pull-right, .footer{
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
     }
 
+    .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    }
+
+    #importForm{
+    display:none;
+    }
 
 </style>
 <?php $__env->startSection('content'); ?>
@@ -17,6 +28,21 @@
     </div>
 
     <div class="pull-right">
+        <div>
+            <a class="btn btn-warning" href="<?php echo e(route('products.create')); ?>" style="height: fit-content;"> <i class="fa-solid fa-plus"></i> Create</a>
+            <a class="btn btn-warning" href="<?php echo e(route('products.export')); ?>" style="height: fit-content;"> <i class="fa-solid fa-file-export"></i> Export</a>
+            <a class="btn btn-warning" onclick="showDiv()" style="height: fit-content;"> <i class="fa-solid fa-file-import"></i> Import</a>
+
+            <form id="importForm" action="<?php echo e(route('products.import')); ?>" method="POST" enctype="multipart/form-data" style="display:none;">
+                <?php echo csrf_field(); ?>
+                <div class="input-group mb-3">
+                    <input type="file" name="file" class="form-control">
+                    <label class="input-group-text" for="inputGroupFile02">import</label>
+                    <button  id="inputGroupFile02" class="btn btn-warning" style="display:none;"><i class="fa-solid fa-file-import"></i>Import</button>
+                </div>
+            </form>
+        </div>
+
                 <div class="mt-1 mb-2">
                     <div class="relative max-w-xs">
                         <form action="<?php echo e(route('products.index')); ?>" method="GET">
@@ -26,12 +52,8 @@
                         </form>
                     </div>
                 </div>
-                <a class="btn btn-warning" href="<?php echo e(route('products.create')); ?>" style="height: fit-content;"> <i class="fa-solid fa-plus"></i> Create</a>
             </div>
 
-   
-
-   
     <?php if($message = Session::get('success')): ?>
         <div class="alert alert-success alert-dismissible">
         <a href="http://127.0.0.1:8000/products" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -71,9 +93,20 @@
     <!-- footer -->
     <div class="footer">
     <small style="display: flex;justify-content: center;">Showing <?php echo e($products->firstItem()); ?> - <?php echo e($products->lastItem()); ?> of <?php echo e($products->total()); ?> entries</small>
-    <span class ="text-black"><?php echo $products->links(); ?></span>
+    <span><?php echo $products->links(); ?></span>
     </div>
 
       
 <?php $__env->stopSection(); ?>
+<script>
+function showDiv() {
+    var toggleImport = document.getElementById("importForm");
+
+    if (toggleImport.style.display === "none") {
+        toggleImport.style.display = "block";
+    } else {
+        toggleImport.style.display = "none";
+    }
+}
+</script>
 <?php echo $__env->make('products.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\laravel-crud\resources\views/products/index.blade.php ENDPATH**/ ?>

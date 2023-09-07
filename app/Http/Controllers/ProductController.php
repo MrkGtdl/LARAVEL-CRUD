@@ -7,7 +7,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Storage;
+use App\Exports\ExportProducts;
+use App\Imports\ImportProducts;
+use Maatwebsite\Excel\Facades\Excel;
   
 class ProductController extends Controller
 {
@@ -30,9 +32,6 @@ class ProductController extends Controller
         ])
         ->paginate(10);
         $i = 'ID'.bin2hex(random_bytes(5));
-
-        // dd($products);
-        // die();
         
         return view('products.index',compact('products','i'));
     }
@@ -113,4 +112,25 @@ class ProductController extends Controller
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
     }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export()
+    {
+        return Excel::download(new ExportProducts, 'product.csv');
+        
+    }
+       
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import(Request $request) 
+    {
+
+        Excel::import(new ImportProducts,request()->file('file'));
+               
+        return back();
+    }
+
 }
